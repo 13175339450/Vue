@@ -5,6 +5,8 @@
     </div>
     <!-- 使用 Person 组件 -->
     <Person/>
+    <!-- 使用 Car 组件 -->
+    <Car/>
 </template>
 
 <!-- 写 TS 脚本 -->
@@ -12,11 +14,14 @@
 
     // 引入 Person 组件
     import Person from './components/Person.vue'
+    // 引入 Car 组件
+    import Car from './components/Car.vue'
     
     export default {
         name: "App", // 定义并导出 App 组件
         components: { // 注册 Person 组件
-            Person
+            Person,
+            Car
         }
     }
 </script>
