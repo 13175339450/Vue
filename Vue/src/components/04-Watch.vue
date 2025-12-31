@@ -27,6 +27,9 @@
     
 </template>
 
+<!-- 总结：
+    监视的要是对象里的属性，那么最好写函数式，注意点：若是对象监视的是地址值，需要关注对象内部，需要手动开启深度监视
+-->
 <script lang="ts" setup name="Watch-HXL">
 
     import { ref, reactive, watch } from 'vue';
@@ -88,14 +91,26 @@
     };
     function changeCar() {
         people.value.cars = {
-            car1: '火车',
+            car1: '火车', // 如果改为自行车，在只监视car1的情况下不会触发watch回调，因为car1返回的值没有变化
             car2: '飞机'
         };
     };
-    // 只监视 cars.car1 属性的变化
-    watch(() => people.value.cars.car1, (newVal, oldVal) => {
-        console.log('Car1 changed:', oldVal, '=>', newVal);
-    });
+    // 1.只监视 cars.car1 属性的变化 需要加 ()=> 方式，因为只能监视 "对象类型" ，而 cars.car1 是一个简单类型
+    // watch(() => people.value.cars.car1, (newVal, oldVal) => {
+    //     console.log('Car1 changed:', oldVal, '=>', newVal);
+    // });
+
+    // 2. 监视 cars 对象的变化 （此时changeCar1和changeCar2都会触发watch回调，而ChangeCar不会，因为此时监视的是Cars这个整体原对象！）
+    // changeCar直接将引用指向新对象，而监视的是旧对象，旧对象依然没变，所以没有回调
+    // watch(people.value.cars, (newVal, oldVal) => {
+    //     console.log('Cars changed:', oldVal, '=>', newVal);
+    // });
+
+    // 3. 监视 cars 对象的变化，添加 deep 选项 （此时changeCar1、changeCar2和ChangeCar都会触发watch回调）
+    // 必须且推荐加上 ()=> 方式
+    watch(() => people.value.cars, (newVal, oldVal) => {
+        console.log('Cars changed:', oldVal, '=>', newVal);
+    }, { deep: true });
 </script>
 
 <style>
