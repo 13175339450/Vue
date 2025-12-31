@@ -104,7 +104,7 @@
     }
 </script> -->
 
-<style>
+<style scoped>
     .person {
         text-align: left;
         color: #ff6600;

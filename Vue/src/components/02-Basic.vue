@@ -41,7 +41,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     /* 在相对位置下才能使用 % */
     .car {
         /* 子绝父相 */
