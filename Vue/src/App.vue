@@ -10,7 +10,9 @@
     <!-- 使用 Compute 组件 -->
     <!-- <Compute/> -->
     <!-- 使用 Watch 组件 -->
-    <Watch/>
+    <!-- <Watch/> -->
+    <!-- 使用 WatchEffect 组件 -->
+    <WatchEffect/>
 </template>
 
 <!-- 写 TS 脚本 -->
@@ -24,6 +26,8 @@
     import Compute from './components/03-Compute.vue'
     // 引入 Watch 组件
     import Watch from './components/04-Watch.vue';
+    // 引入 WatchEffect 组件
+    import WatchEffect from './components/05-WatchEffect.vue';
     
     export default {
         name: "App", // 定义并导出 App 组件
@@ -31,7 +35,8 @@
             Basic1,
             Basic2,
             Compute,
-            Watch
+            Watch,
+            WatchEffect
         }
     }
 </script>
