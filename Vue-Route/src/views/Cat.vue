@@ -4,16 +4,33 @@
         <h1>🐱 {{ cat.name }}</h1>
         <p>名字：{{ cat.name }}</p>
         <p>年龄：{{ cat.age }}岁</p>
+        <button @click="showDog">展示狗</button>
     </div>
 </template>
 
 <script lang="ts" setup name="Cat">
+    // import router from "@/router";
     import { ref } from "vue";
+
+    // 编程式路由
+    import { useRouter } from "vue-router"
 
     let cat = ref({
         name: '猫',
         age: 4
     })
+
+    const router = useRouter();
+    function showDog() {
+        router.push({
+            name: 'gou-detail',
+            params: {
+                id: 99,
+                name: '编程式路由狗狗',
+                age: 6
+            }
+        });
+    }
 </script>
 
 <style scoped>
