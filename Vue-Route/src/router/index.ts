@@ -19,9 +19,15 @@ const router = createRouter({
       path: "/dog",
       component: Dog,
       children: [
+        // {
+        //   name: "gou-detail",
+        //   path: "detail",
+        //   component: DogDetail,
+        // },
         {
+          // ?表示age参数可传可不传
           name: "gou-detail",
-          path: "detail",
+          path: "detail/:id/:name/:age?",
           component: DogDetail,
         },
       ],

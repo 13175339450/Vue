@@ -4,6 +4,7 @@
         <div class="sidebar">
             <ul>
                 <li v-for="dog in dogs" :key="dog.id">
+                    <!-- ======== query 传参 ======== -->
                     <!-- 第一种写法 -->
                     <!-- <router-link :to="`/dog/detail?id=${dog.id}
                         &name=${dog.name}&age=${dog.age}`
@@ -24,10 +25,29 @@
                     </router-link> -->
 
                     <!-- 第三种写法 使用name属性 -->
-                    <router-link 
+                    <!-- <router-link 
                         :to="{
                             name: 'gou-detail',
                             query: {
+                                id: dog.id,
+                                name: dog.name,
+                                age: dog.age
+                            }
+                        }">
+                        {{ dog.name }}
+                    </router-link> -->
+
+                    <!-- ======== params 传参 ======== -->
+                    <!-- 第一种 -->
+                    <!-- <router-link :to="`/dog/detail/${dog.id}
+                      /${dog.name}/${dog.age}`">
+                        {{ dog.name }}
+                    </router-link> -->
+                    <!-- 第二种 -->
+                    <router-link 
+                        :to="{
+                            name: 'gou-detail', // 必须使用name！
+                            params: {
                                 id: dog.id,
                                 name: dog.name,
                                 age: dog.age
