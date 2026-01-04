@@ -1,12 +1,24 @@
 <template>
     <div class="father">
         <h3>父组件</h3>
-        <Child/>
+        儿子传来的 => {{ sonInfo }}
+        <hr>
+        <Child :fathInfo="fatherInfo" :sendToFather="getSon"/>
     </div>
 </template>
 
 <script lang="ts" setup name="father-props">
+    import { ref } from 'vue';
     import Child from './Child.vue';
+
+    const fatherInfo = ref('FATHER');
+
+    const sonInfo = ref('')
+
+    // 获取儿子的方法
+    function getSon(value:string) {
+        sonInfo.value = value;
+    }
 
 </script>
 
