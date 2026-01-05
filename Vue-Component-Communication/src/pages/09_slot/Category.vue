@@ -1,8 +1,9 @@
 <template>
     <div class="category">
-        <h2>{{ title }}</h2>
         <!-- 插槽位置 -->
-        <slot> <h1>没有则展示默认值</h1> </slot>
+        <!-- 默认插槽名是 default -->
+        <slot name="s1"> <h1>没有则展示默认值1</h1> </slot>
+        <slot name="s2"> <h1>没有则展示默认值2</h1> </slot>
     </div>
 </template>
 
@@ -18,12 +19,5 @@
         padding: 10px;
         width: 200px;
         height: 300px;
-    }
-
-    h2 {
-        /* 文字居中 */
-        text-align: center;
-        background-color: rgb(42, 165, 89);
-        border-radius: 10px;
     }
 </style>

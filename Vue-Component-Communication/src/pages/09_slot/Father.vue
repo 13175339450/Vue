@@ -1,13 +1,27 @@
 <template>
     <div class="father">
         <div class="category-container">
-            <Category title="美食">
-                <ul>
-                    <li v-for="item in foods" :key="item.id">{{ item.name }}</li>
-                </ul>
+            <Category>
+                <!-- 插槽位置 s2 展示美食信息 -->
+                <template v-slot:s2>
+                    <ul>
+                        <li v-for="item in foods" :key="item.id">{{ item.name }}</li>
+                    </ul>
+                </template>
+                <!-- 插槽位置 s1 展示标题 -->
+                <template v-slot:s1>
+                    <h2>美食</h2>
+                </template>
             </Category>
-            <Category title="图片">
-                <img :src="image" alt="">
+
+            <Category>
+                <!-- #是 v-slot: 的语法糖 -->
+                <template #s1>
+                    <h2>图片</h2>
+                </template>
+                <template #s2>
+                    <img :src="image" alt="">
+                </template>
             </Category>
         </div>
     </div>
@@ -54,6 +68,13 @@
         display: flex;
         /* 均分开 */
         justify-content: space-evenly;
+    }
+
+    h2 {
+        /* 文字居中 */
+        text-align: center;
+        background-color: rgb(42, 165, 89);
+        border-radius: 10px;
     }
 
     img {
